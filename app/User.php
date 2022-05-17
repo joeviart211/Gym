@@ -3,6 +3,7 @@
 namespace App;
 
 use Auth;
+
 use Lubus\Constants\Status;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
