@@ -6,10 +6,10 @@
         <!-- BEGIN PAGE HEADING -->
         <div class="page-head bg-grey-100 padding-top-15 no-padding-bottom">
             @include('flash::message')
-            <h1 class="page-title no-line-height">Plans
+            <h1 class="page-title no-line-height">Planes
                 @permission(['manage-gymie','manage-plans','add-plan'])
-                <a href="{{ action('PlansController@create') }}" class="page-head-btn btn-sm btn-primary active" role="button">Add New</a>
-                <small>Details of all gym plans</small>
+                <a href="{{ action('PlansController@create') }}" class="page-head-btn btn-sm btn-primary active" role="button">Añadir</a>
+                
             </h1>
             @permission(['manage-gymie','pagehead-stats'])
             <h1 class="font-size-30 text-right color-blue-grey-600 animated fadeInDown total-count pull-right">
@@ -31,13 +31,7 @@
                         <div class="panel-body no-padding-top bg-white">
                             <div class="row margin-top-15 margin-bottom-15">
                                 <div class="col-xs-12 col-md-3 pull-right">
-                                    {!! Form::Open(['method' => 'GET']) !!}
-                                    <div class="btn-inline pull-right">
-                                        <input name="search" id="search" type="text" class="form-control padding-right-35" placeholder="Search...">
-                                        <button class="btn btn-link no-shadow bg-transparent no-padding-top padding-right-10" type="button">
-                                            <i class="ion-search"></i></button>
-                                    </div>
-                                    {!! Form::Close() !!}
+                                    
 
                                 </div>
                             </div>

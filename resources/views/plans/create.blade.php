@@ -27,7 +27,7 @@
 
                         {!! Form::Open(['url' => 'plans','id'=>'plansform']) !!}
 
-                        @include('plans.form',['submitButtonText' => 'Add'])
+                        @include('plans.form',['submitButtonText' => 'Crear'])
 
                         {!! Form::Close() !!}
 

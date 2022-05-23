@@ -6,17 +6,17 @@
         <!-- BEGIN PAGE HEADING -->
         <div class="page-head bg-grey-100 padding-top-15 no-padding-bottom">
             @include('flash::message')
-            <h1 class="page-title no-line-height">Services
+            <h1 class="page-title no-line-height">Servicios
                 @permission(['manage-gymie','manage-services','add-service'])
-                <a href="{{ action('ServicesController@create') }}" class="page-head-btn btn-sm btn-primary active" role="button">Add New</a>
-                <small>Details of all gym services</small>
+                <a href="{{ action('ServicesController@create') }}" class="page-head-btn btn-sm btn-primary active" role="button">Crear nuevo</a>
+                
             </h1>
             @permission(['manage-gymie','pagehead-stats'])
             <h1 class="font-size-30 text-right color-blue-grey-600 animated fadeInDown total-count pull-right"><span data-toggle="counter" data-start="0"
                                                                                                                      data-from="0" data-to="{{ $count }}"
                                                                                                                      data-speed="600"
                                                                                                                      data-refresh-interval="10"></span>
-                <small class="color-blue-grey-600 display-block margin-top-5 font-size-14">Total Services</small>
+                <small class="color-blue-grey-600 display-block margin-top-5 font-size-14"> Total</small>
             </h1>
             @endpermission
             @endpermission
@@ -31,13 +31,7 @@
                         <div class="panel-body no-padding-top bg-white">
                             <div class="row margin-top-15 margin-bottom-15">
                                 <div class="col-xs-12 col-md-3 pull-right">
-                                    {!! Form::Open(['method' => 'GET']) !!}
-                                    <div class="btn-inline pull-right">
-                                        <input name="search" id="search" type="text" class="form-control padding-right-35" placeholder="Search...">
-                                        <button class="btn btn-link no-shadow bg-transparent no-padding-top padding-right-10" type="button"><i
-                                                    class="ion-search"></i></button>
-                                    </div>
-                                    {!! Form::Close() !!}
+                                   
 
                                 </div>
                             </div>

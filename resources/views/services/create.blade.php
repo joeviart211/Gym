@@ -27,7 +27,7 @@
 
                         {!! Form::Open(['url' => 'plans/services','id'=>'servicesform']) !!}
 
-                        @include('services.form',['submitButtonText' => 'Add'])
+                        @include('services.form',['submitButtonText' => 'Crear'])
 
                         {!! Form::Close() !!}
 
