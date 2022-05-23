@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use Auth;
 use App\Invoice;
-use App\SmsTrigger;
+
 use App\ChequeDetail;
 use App\PaymentDetail;
 use Illuminate\Http\Request;
@@ -83,13 +83,7 @@ class PaymentsController extends Controller
             $gym_name = \Utilities::getSetting('gym_name');
 
             if ($request->mode == \constPaymentMode::Cash) {
-                $sms_trigger = SmsTrigger::where('alias', '=', 'payment_recieved')->first();
-                $message = $sms_trigger->message;
-                $sms_text = sprintf($message, $payment_detail->invoice->member->name, $payment_detail->payment_amount, $payment_detail->invoice->invoice_number);
-                $sms_status = $sms_trigger->status;
-                $sender_id = \Utilities::getSetting('sms_sender_id');
-
-                \Utilities::Sms($sender_id, $payment_detail->invoice->member->contact, $sms_text, $sms_status);
+               
             } elseif ($request->mode == \constPaymentMode::Cheque) {
                 $sms_trigger = SmsTrigger::where('alias', '=', 'payment_with_cheque')->first();
                 $message = $sms_trigger->message;

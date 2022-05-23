@@ -51,7 +51,7 @@
                                     <tbody>
                                     <tr>
                                         @foreach ($payment_details as $payment_detail)
-                                            <?php $cheque_detail = App\ChequeDetail::where('payment_id', $payment_detail->id)->first(); ?>
+                                           
                                             <td>
                                                 <a href="{{ action('InvoicesController@show',['id' => $payment_detail->invoice_id]) }}">{{ $payment_detail->invoice_number }}</a>
                                             </td>
