@@ -8,12 +8,12 @@
                 <div class="col-md-12">
                     <div class="panel no-border">
                         <div class="panel-title">
-                            <div class="panel-head font-size-20">Enter details of the payment</div>
+                            <div class="panel-head font-size-20">Agregar un pago</div>
                         </div>
 
                         {!! Form::Open(['url' => 'payments','id' => 'paymentsform']) !!}
 
-                        @include('payments.form',['submitButtonText' => 'Accept Payment'])
+                        @include('payments.form',['submitButtonText' => 'Acceptar pago'])
 
                         {!! Form::Close() !!}
 

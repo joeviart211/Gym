@@ -78,7 +78,7 @@
 
                         <div class="panel-body no-padding-top bg-white">
                             @if($allExpired->count() == 0)
-                                <h4 class="text-center padding-top-15">Sorry! No records found</h4>
+                                <h4 class="text-center padding-top-15">Aun no hay nada </h4>
                             @else
                                 <table id="expired" class="table table-bordered table-striped">
                                     <thead>

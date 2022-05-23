@@ -5,7 +5,7 @@ use Carbon\Carbon;
     <div class="col-md-12">
         <div class="panel no-border">
             <div class="panel-title">
-                <div class="panel-head font-size-20">Enter details of the subscription</div>
+                <div class="panel-head font-size-20">Suscripción</div>
             </div>
 
             <div class="panel-body">
@@ -15,11 +15,11 @@ use Carbon\Carbon;
                     </div>
 
                     <div class="col-sm-3">
-                        {!! Form::label('start_date_0','Start Date') !!}
+                        {!! Form::label('start_date_0','Fecha de inicio') !!}
                     </div>
 
                     <div class="col-sm-3">
-                        {!! Form::label('end_date_0','End Date') !!}
+                        {!! Form::label('end_date_0','Fecha de terminación') !!}
                     </div>
 
                     <div class="col-sm-1">

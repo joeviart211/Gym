@@ -32,51 +32,12 @@
                         <div class="panel-title bg-blue-grey-50">
                             <div class="panel-head font-size-15">
 
-                                <div class="row">
-                                    <div class="col-sm-12 no-padding">
-                                        {!! Form::Open(['method' => 'GET']) !!}
-                                        <div class="col-sm-3">
-                                            {!! Form::label('enquiry-daterangepicker','Date range') !!}
-                                            <div id="enquiry-daterangepicker"
-                                                 class="gymie-daterangepicker btn bg-grey-50 daterange-padding no-border color-grey-600 hidden-xs no-shadow">
-                                                <i class="ion-calendar margin-right-10"></i>
-                                                <span>{{$drp_placeholder}}</span>
-                                                <i class="ion-ios-arrow-down margin-left-5"></i>
-                                            </div>
-                                            {!! Form::text('drp_start',null,['class'=>'hidden', 'id' => 'drp_start']) !!}
-                                            {!! Form::text('drp_end',null,['class'=>'hidden', 'id' => 'drp_end']) !!}
-                                        </div>
-
-                                        <div class="col-sm-2">
-                                            {!! Form::label('sort_field','Sort By') !!}
-                                            {!! Form::select('sort_field',array('created_at' => 'Date','name' => 'Name','status' => 'Status'),old('sort_field'),['class' => 'form-control selectpicker show-tick show-menu-arrow', 'id' => 'sort_field']) !!}
-                                        </div>
-
-                                        <div class="col-sm-2">
-                                            {!! Form::label('sort_direction','Order') !!}
-                                            {!! Form::select('sort_direction',array('desc' => 'Descending','asc' => 'Ascending'),old('sort_direction'),['class' => 'form-control selectpicker show-tick show-menu-arrow', 'id' => 'sort_direction']) !!}</span>
-                                        </div>
-
-                                        <div class="col-xs-3">
-                                            {!! Form::label('search','Keyword') !!}
-                                            <input value="{{ old('search') }}" name="search" id="search" type="text" class="form-control padding-right-35"
-                                                   placeholder="Search...">
-                                        </div>
-
-                                        <div class="col-xs-2">
-                                            {!! Form::label('&nbsp;') !!} <br/>
-                                            <button type="submit" class="btn btn-primary active no-border">GO</button>
-                                        </div>
-                                        {!! Form::Close() !!}
-                                    </div>
-                                </div>
-
-                            </div>
+                                
                         </div>
 
                         <div class="panel-body bg-white">
                             @if($enquiries->count() == 0)
-                                <h4 class="text-center padding-top-15">Sorry! No records found</h4>
+                                <h4 class="text-center padding-top-15"></h4>
                             @else
                                 <table id="enquiries" class="table table-bordered table-striped">
                                     <thead>

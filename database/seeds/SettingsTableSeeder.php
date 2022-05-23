@@ -28,7 +28,7 @@ class SettingsTableSeeder extends Seeder
             ],
             [
                 'key' => 'gym_name',
-                'value' => 'My Gym',
+                'value' => 'Gimnasio Dante',
             ],
             [
                 'key' => 'gym_address_1',
@@ -76,7 +76,7 @@ class SettingsTableSeeder extends Seeder
             ],
             [
                 'key' => 'taxes',
-                'value' => '18',
+                'value' => '15',
             ],
             [
                 'key' => 'sms_api_key',

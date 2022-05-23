@@ -77,11 +77,11 @@
             </div>
             <!-- END RPOFILE -->
             <!-- BEGIN NAV -->
-            <div class="title">Navigation</div>
+            <div class="title">Menú</div>
             <ul class="nav-sidebar">
                 <li class="{{ Utilities::setActiveMenu('dashboard*') }}">
                     <a href="{{ action('DashboardController@index') }}">
-                        <i class="ion-home"></i> <span>Dashboard</span>
+                        <i class="ion-home"></i> <span>Inicio </span>
                     </a>
                 </li>
 
@@ -95,15 +95,15 @@
                 @permission(['manage-gymie','manage-members','view-member'])
                 <li class="nav-dropdown {{ Utilities::setActiveMenu('members*',true) }}">
                     <a href="#">
-                        <i class="ion-person-add"></i> <span>Members</span>
+                        <i class="ion-person-add"></i> <span>Miembros </span>
                     </a>
                     <ul>
-                        <li class="{{ Utilities::setActiveMenu('members/all') }}"><a href="{{ action('MembersController@index') }}">All Members</a></li>
+                        <li class="{{ Utilities::setActiveMenu('members/all') }}"><a href="{{ action('MembersController@index') }}">Todos los miembros</a></li>
                         @permission(['manage-gymie','manage-members','add-member'])
-                        <li class="{{ Utilities::setActiveMenu('members/create') }}"><a href="{{ action('MembersController@create') }}">Add Member</a></li>
+                        <li class="{{ Utilities::setActiveMenu('members/create') }}"><a href="{{ action('MembersController@create') }}">Añadir miembro</a></li>
                         @endpermission
-                        <li class="{{ Utilities::setActiveMenu('members/active') }}"><a href="{{ action('MembersController@active') }}">Active Members</a></li>
-                        <li class="{{ Utilities::setActiveMenu('members/inactive') }}"><a href="{{ action('MembersController@inactive') }}">Inactive Members</a>
+                        <li class="{{ Utilities::setActiveMenu('members/active') }}"><a href="{{ action('MembersController@active') }}">Miembros activos</a></li>
+                        
                         </li>
                     </ul>
                 </li>
@@ -112,12 +112,12 @@
                 @permission(['manage-gymie','manage-payments','view-payment'])
                 <li class="nav-dropdown {{ Utilities::setActiveMenu('payments*',true) }}">
                     <a href="#">
-                        <i class="ion-cash"></i> <span>Payments</span>
+                        <i class="ion-cash"></i> <span>Pagos</span>
                     </a>
                     <ul>
-                        <li class="{{ Utilities::setActiveMenu('payments/all') }}"><a href="{{ action('PaymentsController@index') }}">All Payments</a></li>
+                        <li class="{{ Utilities::setActiveMenu('payments/all') }}"><a href="{{ action('PaymentsController@index') }}">Todos los pagos</a></li>
                         @permission(['manage-gymie','manage-payments','add-payment'])
-                        <li class="{{ Utilities::setActiveMenu('payments/create') }}"><a href="{{ action('PaymentsController@create') }}">Add Payment</a></li>
+                        <li class="{{ Utilities::setActiveMenu('payments/create') }}"><a href="{{ action('PaymentsController@create') }}">Añadir un pago </a></li>
                         @endpermission
                     </ul>
                 </li>
@@ -132,8 +132,8 @@
                         <li class="{{ Utilities::setActiveMenu('subscriptions/all') }}"><a href="{{ action('SubscriptionsController@index') }}">Lista de Subscriptores
                               </a></li>
                         @permission(['manage-gymie','manage-subscriptions','add-subscription'])
-                        <li class="{{ Utilities::setActiveMenu('subscriptions/create') }}"><a href="{{ action('SubscriptionsController@create') }}">Añadir
-                                Subscripción</a></li>
+                        <li class="{{ Utilities::setActiveMenu('subscriptions/create') }}"><a href="{{ action('SubscriptionsController@create') }}">Añadir plan de suscripción
+                               </a></li>
                         @endpermission
                         
                     </ul>
@@ -153,7 +153,7 @@
                 @permission(['manage-gymie','manage-plans','view-plan'])
                 <li class="nav-dropdown {{ Utilities::setActiveMenu('plans*',true) }}">
                     <a href="#">
-                        <i class="ion-compose"></i> <span>Plane</span>
+                        <i class="ion-compose"></i> <span>Planes</span>
                     </a>
                     <ul>
                         <li class="{{ Utilities::setActiveMenu('plans/all') }}"><a href="{{ action('PlansController@index') }}">Todos los planes</a></li>

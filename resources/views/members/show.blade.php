@@ -13,47 +13,21 @@
                 <div class="col-md-12"><!-- Main Col -->
                     <div class="panel no-border ">
                         <div class="panel-title">
-                            <div class="panel-head font-size-20">Member Detail</div>
+                            <div class="panel-head font-size-20">Detalles</div>
                             <div class="pull-right no-margin">
-                                @permission(['manage-gymie','manage-members','edit-member'])
-                                <a class="btn btn-primary" href="{{ action('MembersController@edit',['id' => $member->id]) }}">
-                                    <span>Edit</span>
-                                </a>
-                                @endpermission
+                                
 
-                                @permission(['manage-gymie','manage-members','delete-member'])
+                               
                                 <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal-{{$member->id}}" data-id="{{$member->id}}">
-                                    <span>Delete</span>
+                                    <span>Borrar</span>
                                 </button>
-                                @endpermission
+                                
 
-                                <!-- Modal -->
-                                <div id="deleteModal-{{$member->id}}" class="modal fade" role="dialog">
-                                    <div class="modal-dialog">
-
-                                        <!-- Modal content-->
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                <h4 class="modal-title">Confirm</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>Are you sure you want to delete it?</p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                {!! Form::Open(['action'=>['MembersController@archive',$member->id],'method' => 'POST','id'=>'archiveform-'.$member->id]) !!}
-                                                <input type="submit" class="btn btn-danger" value="Yes" id="btn-{{ $member->id }}"/>
-                                                <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
-                                                {!! Form::Close() !!}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                
+                                
 
                         <div class="panel-body">
-                            <div class="row">                <!--Main row start-->
+                            <div class="row">               
                                 <div class="col-sm-8">
                                     <div class="row">
                                         <div class="col-sm-4">
@@ -82,7 +56,7 @@
 
                                             <div class="row">
                                                 <div class="col-sm-4">
-                                                    <label>Name</label>
+                                                    <label>Nombre</label>
                                                 </div>
                                                 <div class="col-sm-8">
                                                     <span class="show-data">{{$member->name}}</span>
@@ -93,7 +67,7 @@
 
                                             <div class="row">
                                                 <div class="col-sm-4">
-                                                    <label>Member Code</label>
+                                                    <label>Codigo</label>
                                                 </div>
                                                 <div class="col-sm-8">
                                                     <span class="show-data">{{$member->member_code}}</span>
@@ -103,26 +77,19 @@
 
                                             <div class="row">
                                                 <div class="col-sm-4">
-                                                    <label>Date Of Birth</label>
+                                                    <label>Fecha de nacimiento </label>
                                                 </div>
                                                 <div class="col-sm-8">
                                                     <span class="show-data">{{$member->DOB}}</span>
                                                 </div>
                                             </div>
                                             <hr class="margin-top-0 margin-bottom-10">
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <label>Gender</label>
-                                                </div>
-                                                <div class="col-sm-8">
-                                                    <span class="show-data">{{Utilities::getGender($member->gender)}}</span>
-                                                </div>
-                                            </div>
+                                            
                                             <hr class="margin-top-0 margin-bottom-10">
 
                                             <div class="row">
                                                 <div class="col-sm-4">
-                                                    <label>Contact Number</label>
+                                                    <label>Telefono</label>
                                                 </div>
                                                 <div class="col-sm-8">
                                                     <span class="show-data">{{$member->contact}}</span>
@@ -132,7 +99,7 @@
                                             <hr class="margin-top-0 margin-bottom-10">
                                             <div class="row">
                                                 <div class="col-sm-4">
-                                                    <label>Email</label>
+                                                    <label>Correo </label>
                                                 </div>
                                                 <div class="col-sm-8">
                                                     <span class="show-data">{{$member->email}}</span>
@@ -140,18 +107,11 @@
                                             </div>
 
                                             <hr class="margin-top-0 margin-bottom-10">
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <label>Member Since</label>
-                                                </div>
-                                                <div class="col-sm-8">
-                                                    <span class="show-data">{{$member->created_at->toFormattedDateString()}}</span>
-                                                </div>
-                                            </div>
+                                            
                                             <hr class="margin-top-0 margin-bottom-10">
                                             <div class="row">
                                                 <div class="col-sm-4">
-                                                    <label>Emergency Contact</label>
+                                                    <label>Contacto de emergenciat</label>
                                                 </div>
                                                 <div class="col-sm-8">
                                                     <span class="show-data">{{$member->emergency_contact}}</span>
@@ -159,19 +119,19 @@
                                             </div>
 
 
-                                        </div>  <!-- End of outer Row -->
+                                        </div>  
                                     </div>
-                                </div>   <!-- End of Outer Column -->
+                                </div>   
 
                                 <div class="col-sm-4">
-                                    <div class="row"><!-- Main row -->
-                                        <div class="col-md-12"><!-- Main Col -->
+                                    <div class="row">
+                                        <div class="col-md-12">
                                             <div class="panel bg-grey-50">
                                                 <div class="panel-title bg-transparent">
                                                     <div class="panel-head"><strong><span class="fa-stack">
 							  <i class="fa fa-circle-thin fa-stack-2x"></i>
 							  <i class="fa fa-ellipsis-h fa-stack-1x"></i>
-							</span> Additional Details</strong></div>
+							
                                                 </div>
                                                 <div class="panel-body">
 
@@ -184,7 +144,7 @@
                                                         }
                                                         ?>
                                                         <div class="col-sm-4">
-                                                            <label>Plan name</label>
+                                                            <label>Plan </label>
                                                         </div>
                                                         <div class="col-sm-8">
                                                             <span class="show-data">{{implode(",",$plansArray)}}</span>
@@ -201,18 +161,11 @@
                                                         </div>
                                                     </div>
                                                     <hr class="margin-top-0 margin-bottom-10">
-                                                    <div class="row">
-                                                        <div class="col-sm-4">
-                                                            <label>Aim</label>
-                                                        </div>
-                                                        <div class="col-sm-8">
-                                                            <span class="show-data">{{Utilities::getAim ($member->aim)}}</span>
-                                                        </div>
-                                                    </div>
+                                                    
                                                     <hr class="margin-top-0 margin-bottom-10">
                                                     <div class="row">
                                                         <div class="col-sm-4">
-                                                            <label>ID Proof</label>
+                                                            <label>Comprobante de identidad</label>
                                                         </div>
                                                         <div class="col-sm-8">
                                                             <span class="show-data">{{$member->proof_name}}</span>
@@ -221,7 +174,7 @@
                                                     <hr class="margin-top-0 margin-bottom-10">
                                                     <div class="row">
                                                         <div class="col-sm-4">
-                                                            <label>Address</label>
+                                                            <label>Domicilio </label>
                                                         </div>
                                                         <div class="col-sm-8">
                                                             <span class="show-data">{{$member->address}}</span>
@@ -230,7 +183,7 @@
                                                     <hr class="margin-top-0 margin-bottom-10">
                                                     <div class="row">
                                                         <div class="col-sm-4">
-                                                            <label>Health Issues</label>
+                                                            <label>Problemas de salud</label>
                                                         </div>
                                                         <div class="col-sm-8">
                                                             <span class="show-data">{{$member->health_issues}}</span>
@@ -244,53 +197,11 @@
 
                                 </div>
 
-                            </div>   <!-- End Of Main Row -->
+                            </div>  
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!--######################### Subscription history for the member ################################# -->
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel no-border ">
-                        <div class="panel-title">
-                            <div class="panel-head font-size-20">Subscription history for the member</div>
-                        </div>
-                        <div class="panel-body">
-                            <table id="_payment" class="table table-bordered table-striped">
-                                <thead>
-                                <tr>
-                                    <th>Invoice Number</th>
-                                    <th>Plan Name</th>
-                                    <th>Start Date</th>
-                                    <th>End Date</th>
-                                    <th>Status</th>
-                                    <th>Payment Status</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach ($member->subscriptions->sortByDesc('created_at') as $subscription)
-                                    <tr>
-                                        <td>
-                                            <a href="{{ action('InvoicesController@show',['id' => $subscription->invoice_id]) }}">{{ $subscription->invoice->invoice_number }}</a>
-                                        </td>
-                                        <td>{{ $subscription->plan->plan_name }}</td>
-                                        <td>{{ $subscription->start_date->format('Y-m-d') }}</td>
-                                        <td>{{ $subscription->end_date->format('Y-m-d') }}</td>
-                                        <td>
-                                            <span class="{{ Utilities::getSubscriptionLabel ($subscription->status) }}">{{ Utilities::getSubscriptionStatus ($subscription->status) }}</span>
-                                        </td>
-                                        <td>{{ Utilities::getInvoiceStatus ($subscription->invoice->status) }}</td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
+            
 @stop

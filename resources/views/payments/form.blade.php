@@ -3,7 +3,7 @@
         <div class="col-sm-6">
             <div class="form-group">
                 <?php  $invoiceList = App\Invoice::lists('invoice_number', 'id'); ?>
-                {!! Form::label('invoice_id','Invoice Number') !!}
+                {!! Form::label('invoice_id','Numero de pago ') !!}
                 {!! Form::select('invoice_id',$invoiceList,(isset($invoice) ? $invoice->id : null),['class'=>'form-control selectpicker show-tick show-menu-arrow', 'id' => 'invoice_id', 'data-live-search'=> 'true']) !!}
             </div>
         </div>
@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col-sm-6">
             <div class="form-group">
-                {!! Form::label('payment_amount','Amount') !!}
+                {!! Form::label('payment_amount','Total') !!}
                 <div class="input-group">
                     <div class="input-group-addon"><i class="fa fa-inr"></i></div>
                     {!! Form::text('payment_amount',(isset($invoice) ? $invoice->pending_amount : null),['class'=>'form-control', 'id' => 'payment_amount']) !!}
@@ -25,8 +25,8 @@
     <div class="row">
         <div class="col-sm-6">
             <div class="form-group">
-                {!! Form::label('mode','Mode') !!}
-                {!! Form::select('mode',array('1' => 'Cash', '0' => 'Cheque'),(isset($payment_detail) ? $payment_detail->mode : null),['class'=>'form-control selectpicker show-tick show-menu-arrow', 'id' => 'mode']) !!}
+                {!! Form::label('mode','Modo') !!}
+                {!! Form::select('mode',array('1' => 'Efectivo', '0' => 'Tarjeta'),(isset($payment_detail) ? $payment_detail->mode : null),['class'=>'form-control selectpicker show-tick show-menu-arrow', 'id' => 'mode']) !!}
             </div>
         </div>
     </div>

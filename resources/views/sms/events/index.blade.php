@@ -33,7 +33,7 @@
                             </div>
 
                             @if($events->count() == 0)
-                                <h4 class="text-center padding-top-15">Sorry! No records found</h4>
+                                <h4 class="text-center padding-top-15">Aun no hay nada </h4>
                             @else
 
                                 <table id="events" class="table table-bordered table-striped">

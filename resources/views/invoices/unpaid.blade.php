@@ -74,7 +74,7 @@
                         </div>
                         <div class="panel-body bg-white">
                             @if($invoices->count() == 0)
-                                <h4 class="text-center padding-top-15">Sorry! No records found</h4>
+                                <h4 class="text-center padding-top-15">Aun no hay nada </h4>
                             @else
 
                                 <table id="invoices" class="table table-bordered table-striped">
