@@ -52,9 +52,7 @@
                                     @include('dashboard._index.expired', ['allExpired' => $allExpired])
                                 </div>
 
-                                <div class="tab-pane fade" id="birthdays">
-                                    @include('dashboard._index.birthdays', ['birthdays' => $birthdays])
-                                </div>
+                                
 
                                 <div class="tab-pane fade" id="recent">
                                     @include('dashboard._index.recents', ['recents' =>  $recents])

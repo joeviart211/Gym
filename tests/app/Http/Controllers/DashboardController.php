@@ -7,7 +7,7 @@ use App\Member;
 use App\SmsLog;
 use JavaScript;
 use App\Enquiry;
-use App\Expense;
+ 
 use App\Setting;
 use App\Followup;
 use App\ChequeDetail;

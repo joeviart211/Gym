@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Expense;
+ 
 use Carbon\Carbon;
 use App\SmsTrigger;
 use Illuminate\Console\Command;

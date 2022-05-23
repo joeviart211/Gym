@@ -1,28 +1,15 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
 
-// Log viewer route
-Route::get('logs', ['middleware' => ['auth', 'role:Gymie'], 'uses' => '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index']);
 
-//Data Migration
-Route::get('data/migration', ['middleware' => ['auth', 'role:Gymie'], 'uses' => 'DataMigrationController@migrate']);
-Route::get('data/media/migration', ['middleware' => ['auth', 'role:Gymie'], 'uses' => 'DataMigrationController@migrateMedia']);
-Route::get('excel/migration', ['middleware' => ['auth', 'role:Gymie'], 'uses' => 'DataMigrationController@migrateExcel']);
 
-//Report DATA
+
+
+
+
 Route::get('reportData/members', 'ReportData\MembersController@details');
 
-//API routes
+
 Route::post('api/token', 'Api\AuthenticateController@authenticate');
 
 Route::group(['prefix' => 'api', 'middleware' => ['jwt.auth']], function () {
@@ -36,10 +23,9 @@ Route::group(['prefix' => 'api', 'middleware' => ['jwt.auth']], function () {
     Route::get('invoices/partial', 'Api\InvoicesController@partial');
     Route::get('invoices/overpaid', 'Api\InvoicesController@overpaid');
     Route::get('enquiries', 'Api\EnquiriesController@index');
-    Route::get('settings', 'Api\SettingsController@index');
+   
     Route::get('plans', 'Api\PlansController@index');
-    Route::get('expenseCategories', 'Api\ExpenseCategoriesController@index');
-    Route::get('expenses', 'Api\ExpensesController@index');
+
     Route::get('subscriptions/expiring', 'Api\SubscriptionsController@expiring');
     Route::get('subscriptions/expired', 'Api\SubscriptionsController@expired');
     Route::get('members/{id}', 'Api\MembersController@show');
@@ -48,25 +34,23 @@ Route::group(['prefix' => 'api', 'middleware' => ['jwt.auth']], function () {
     Route::get('invoices/{id}', 'Api\InvoicesController@show');
     Route::get('enquiries/{id}', 'Api\EnquiriesController@show');
     Route::get('plans/{id}', 'Api\PlansController@show');
-    Route::get('expenseCategories/{id}', 'Api\ExpenseCategoriesController@show');
-    Route::get('expenses/{id}', 'Api\ExpensesController@show');
+   
 });
 
-//Auth routes
+
 Route::group(['prefix' => 'auth'], function () {
     Route::get('login', 'Auth\AuthController@getLogin');
     Route::post('login', 'Auth\AuthController@postLogin');
     Route::get('logout', 'Auth\AuthController@getLogout');
 });
 
-//dashboard
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/', 'DashboardController@index');
     Route::get('/dashboard', 'DashboardController@index');
-    Route::post('/dashboard/smsRequest', 'DashboardController@smsRequest');
+   
 });
 
-//MembersController
+
 Route::group(['prefix' => 'members', 'middleware' => ['auth']], function () {
     Route::get('/', ['middleware' => ['permission:manage-gymie|manage-members|view-member'], 'uses' => 'MembersController@index']);
     Route::get('all', ['middleware' => ['permission:manage-gymie|manage-members|view-member'], 'uses' => 'MembersController@index']);
@@ -81,42 +65,11 @@ Route::group(['prefix' => 'members', 'middleware' => ['auth']], function () {
     Route::get('{id}/transfer', ['middleware' => ['permission:manage-gymie|manage-enquiries|transfer-enquiry'], 'uses' => 'MembersController@transfer']);
 });
 
-//SmsController
-Route::group(['prefix' => 'sms', 'middleware' => ['auth']], function () {
-    Route::get('triggers', ['middleware' => ['permission:manage-gymie|manage-sms'], 'uses' => 'SmsController@triggersIndex']);
-    Route::post('triggers/update', ['middleware' => ['permission:manage-gymie|manage-sms'], 'uses' => 'SmsController@triggerUpdate']);
-    Route::get('events', ['middleware' => ['permission:manage-gymie|manage-sms'], 'uses' => 'SmsController@eventsIndex']);
-    Route::get('events/create', ['middleware' => ['permission:manage-gymie|manage-sms'], 'uses' => 'SmsController@createEvent']);
-    Route::post('events', ['middleware' => ['permission:manage-gymie|manage-sms'], 'uses' => 'SmsController@storeEvent']);
-    Route::get('events/{id}/edit', ['middleware' => ['permission:manage-gymie|manage-sms'], 'uses' => 'SmsController@editEvent']);
-    Route::post('events/{id}/update', ['middleware' => ['permission:manage-gymie|manage-sms'], 'uses' => 'SmsController@updateEvent']);
-    Route::post('events/{id}/destroy', ['middleware' => ['permission:manage-gymie|manage-sms'], 'uses' => 'SmsController@destroyEvent']);
-    Route::get('send', ['middleware' => ['permission:manage-gymie|manage-sms'], 'uses' => 'SmsController@send']);
-    Route::post('shoot', ['middleware' => ['permission:manage-gymie|manage-sms'], 'uses' => 'SmsController@shoot']);
-    Route::get('log', ['middleware' => ['permission:manage-gymie|manage-sms'], 'uses' => 'SmsController@logIndex']);
-    Route::get('log/refresh', ['middleware' => ['permission:manage-gymie|manage-sms'], 'uses' => 'SmsController@logRefresh']);
-});
 
-//enquiries
-Route::group(['prefix' => 'enquiries', 'middleware' => ['auth']], function () {
-    Route::get('/', ['middleware' => ['permission:manage-gymie|manage-enquiries|view-enquiry'], 'uses' => 'EnquiriesController@index']);
-    Route::get('all', ['middleware' => ['permission:manage-gymie|manage-enquiries|view-enquiry'], 'uses' => 'EnquiriesController@index']);
-    Route::get('create', ['middleware' => ['permission:manage-gymie|manage-enquiries|add-enquiry'], 'uses' => 'EnquiriesController@create']);
-    Route::post('/', ['middleware' => ['permission:manage-gymie|manage-enquiries|add-enquiry'], 'uses' => 'EnquiriesController@store']);
-    Route::get('{id}/show', ['middleware' => ['permission:manage-gymie|manage-enquiries|view-enquiry'], 'uses' => 'EnquiriesController@show']);
-    Route::post('{id}/lost', ['middleware' => ['permission:manage-gymie|manage-enquiries|view-enquiry'], 'uses' => 'EnquiriesController@lost']);
-    Route::post('{id}/markMember', ['middleware' => ['permission:manage-gymie|manage-enquiries|view-enquiry'], 'uses' => 'EnquiriesController@markMember']);
-    Route::get('{id}/edit', ['middleware' => ['permission:manage-gymie|manage-enquiries|edit-enquiry'], 'uses' => 'EnquiriesController@edit']);
-    Route::post('{id}/update', ['middleware' => ['permission:manage-gymie|manage-enquiries|edit-enquiry'], 'uses' => 'EnquiriesController@update']);
-});
 
-//followups
-Route::group(['prefix' => 'enquiry', 'middleware' => ['auth']], function () {
-    Route::post('followups', ['middleware' => ['permission:manage-gymie|manage-enquiries|add-enquiry-followup'], 'uses' => 'FollowupsController@store']);
-    Route::post('followups/{id}/update', ['middleware' => ['permission:manage-gymie|manage-enquiries|edit-enquiry-followup'], 'uses' => 'FollowupsController@update']);
-});
 
-//plans
+
+
 Route::group(['prefix' => 'plans', 'middleware' => ['auth']], function () {
     Route::get('/', ['middleware' => ['permission:manage-gymie|manage-plans|view-plan'], 'uses' => 'PlansController@index']);
     Route::get('all', ['middleware' => ['permission:manage-gymie|manage-plans|view-plan'], 'uses' => 'PlansController@index']);
@@ -135,7 +88,7 @@ Route::group(['prefix' => 'plans', 'middleware' => ['auth']], function () {
     Route::post('services/{id}/delete', ['middleware' => ['permission:manage-gymie|manage-services|delete-service'], 'uses' => 'ServicesController@delete']);
 });
 
-//subsciptions
+
 Route::group(['prefix' => 'subscriptions', 'middleware' => ['auth']], function () {
     Route::get('/', ['middleware' => ['permission:manage-gymie|manage-subscriptions|view-subscription'], 'uses' => 'SubscriptionsController@index']);
     Route::get('all', ['middleware' => ['permission:manage-gymie|manage-subscriptions|view-subscription'], 'uses' => 'SubscriptionsController@index']);
@@ -153,7 +106,7 @@ Route::group(['prefix' => 'subscriptions', 'middleware' => ['auth']], function (
     Route::post('{id}/delete', ['middleware' => ['permission:manage-gymie|manage-subscriptions|delete-subscription'], 'uses' => 'SubscriptionsController@delete']);
 });
 
-//invoices
+
 Route::group(['prefix' => 'invoices', 'middleware' => ['auth']], function () {
     Route::get('/', ['middleware' => ['permission:manage-gymie|manage-invoices|view-invoice'], 'uses' => 'InvoicesController@index']);
     Route::get('all', ['middleware' => ['permission:manage-gymie|manage-invoices|view-invoice'], 'uses' => 'InvoicesController@index']);
@@ -168,7 +121,7 @@ Route::group(['prefix' => 'invoices', 'middleware' => ['auth']], function () {
     Route::post('{id}/applyDiscount', ['middleware' => ['permission:manage-gymie|manage-invoices|add-discount'], 'uses' => 'InvoicesController@applyDiscount']);
 });
 
-//payments
+
 Route::group(['prefix' => 'payments', 'middleware' => ['auth']], function () {
     Route::get('/', ['middleware' => ['permission:manage-gymie|manage-payments|view-payment'], 'uses' => 'PaymentsController@index']);
     Route::get('all', ['middleware' => ['permission:manage-gymie|manage-payments|view-payment'], 'uses' => 'PaymentsController@index']);
@@ -184,35 +137,7 @@ Route::group(['prefix' => 'payments', 'middleware' => ['auth']], function () {
     Route::post('{id}/delete', ['middleware' => ['permission:manage-gymie|manage-payments|delete-payment'], 'uses' => 'PaymentsController@delete']);
 });
 
-//expenses
-Route::group(['prefix' => 'expenses', 'middleware' => ['auth']], function () {
-    Route::get('/', ['middleware' => ['permission:manage-gymie|manage-expenses|view-expense'], 'uses' => 'ExpensesController@index']);
-    Route::get('all', ['middleware' => ['permission:manage-gymie|manage-expenses|view-expense'], 'uses' => 'ExpensesController@index']);
-    Route::get('show', ['middleware' => ['permission:manage-gymie|manage-expenses|view-expense'], 'uses' => 'ExpensesController@show']);
-    Route::get('create', ['middleware' => ['permission:manage-gymie|manage-expenses|add-expense'], 'uses' => 'ExpensesController@create']);
-    Route::post('/', ['middleware' => ['permission:manage-gymie|manage-expenses|add-expense'], 'uses' => 'ExpensesController@store']);
-    Route::get('{id}/edit', ['middleware' => ['permission:manage-gymie|manage-expenses|edit-expense'], 'uses' => 'ExpensesController@edit']);
-    Route::post('{id}/update', ['middleware' => ['permission:manage-gymie|manage-expenses|edit-expense'], 'uses' => 'ExpensesController@update']);
-    Route::get('{id}/paid', ['middleware' => ['permission:manage-gymie|manage-expenses|edit-expense'], 'uses' => 'ExpensesController@paid']);
-    Route::post('{id}/delete', ['middleware' => ['permission:manage-gymie|manage-expenses|delete-expense'], 'uses' => 'ExpensesController@delete']);
-    Route::get('/categories', ['middleware' => ['permission:manage-gymie|manage-expenseCategories|view-expenseCategory'], 'uses' => 'ExpenseCategoriesController@index']);
-    Route::get('categories/all', ['middleware' => ['permission:manage-gymie|manage-expenseCategories|view-expenseCategory'], 'uses' => 'ExpenseCategoriesController@index']);
-    Route::get('categories/create', ['middleware' => ['permission:manage-gymie|manage-expenseCategories|add-expenseCategory'], 'uses' => 'ExpenseCategoriesController@create']);
-    Route::post('/categories', ['middleware' => ['permission:manage-gymie|manage-expenseCategories|add-expenseCategory'], 'uses' => 'ExpenseCategoriesController@store']);
-    Route::get('categories/{id}/edit', ['middleware' => ['permission:manage-gymie|manage-expenseCategories|edit-expenseCategory'], 'uses' => 'ExpenseCategoriesController@edit']);
-    Route::post('categories/{id}/update', ['middleware' => ['permission:manage-gymie|manage-expenseCategories|edit-expenseCategory'], 'uses' => 'ExpenseCategoriesController@update']);
-    Route::post('categories/{id}/archive', ['middleware' => ['permission:manage-gymie|manage-expenseCategories|delete-expenseCategory'], 'uses' => 'ExpenseCategoriesController@archive']);
-});
 
-//settings
-Route::group(['prefix' => 'settings', 'middleware' => ['permission:manage-gymie|manage-settings', 'auth']], function () {
-    Route::get('/', 'SettingsController@show');
-    Route::get('edit', 'SettingsController@edit');
-    Route::post('save', 'SettingsController@save');
-});
-
-//User Module with roles & permissions
-//User
 Route::group(['prefix' => 'user', 'middleware' => ['permission:manage-gymie|manage-users', 'auth']], function () {
     Route::get('/', 'AclController@userIndex');
     Route::get('create', 'AclController@createUser');
@@ -222,15 +147,6 @@ Route::group(['prefix' => 'user', 'middleware' => ['permission:manage-gymie|mana
     Route::post('{id}/delete', 'AclController@deleteUser');
 });
 
-//Roles
-Route::group(['prefix' => 'user/role', 'middleware' => ['permission:manage-gymie|manage-users', 'auth']], function () {
-    Route::get('/', 'AclController@roleIndex');
-    Route::get('create', 'AclController@createRole');
-    Route::post('/', 'AclController@storeRole');
-    Route::get('{id}/edit', 'AclController@editRole');
-    Route::post('{id}/update', 'AclController@updateRole');
-    Route::post('{id}/delete', 'AclController@deleteRole');
-});
 
 //Permissions
 Route::group(['prefix' => 'user/permission', 'middleware' => ['auth', 'role:Gymie']], function () {

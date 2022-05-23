@@ -4,13 +4,10 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Member;
-use App\SmsLog;
+
 use JavaScript;
 use App\Enquiry;
-use App\Expense;
-use App\Setting;
-use App\Followup;
-use App\ChequeDetail;
+
 use App\Subscription;
 use Illuminate\Http\Request;
 
@@ -32,22 +29,12 @@ class DashboardController extends Controller
         $expiringCount = $expirings->total();
         $allExpired = Subscription::dashboardExpired()->paginate(5);
         $expiredCount = $allExpired->total();
-        $birthdays = Member::birthday()->get();
-        $birthdayCount = $birthdays->count();
+        
         $recents = Member::recent()->get();
-        $enquiries = Enquiry::onlyLeads()->get();
-        $reminders = Followup::reminders()->get();
-        $reminderCount = $reminders->count();
-        $dues = Expense::dueAlerts()->get();
-        $outstandings = Expense::outstandingAlerts()->get();
-        $smsRequestSetting = \Utilities::getSetting('sms_request');
-        $smslogs = SmsLog::dashboardLogs()->get();
-        $recievedCheques = ChequeDetail::where('status', \constChequeStatus::Recieved)->get();
-        $recievedChequesCount = $recievedCheques->count();
-        $depositedCheques = ChequeDetail::where('status', \constChequeStatus::Deposited)->get();
-        $depositedChequesCount = $depositedCheques->count();
-        $bouncedCheques = ChequeDetail::where('status', \constChequeStatus::Bounced)->get();
-        $bouncedChequesCount = $bouncedCheques->count();
+       
+        
+    
+    
         $membersPerPlan = json_decode(\Utilities::membersPerPlan());
 
         return view('dashboard.index', compact('expirings', 'allExpired', 'birthdays', 'recents', 'enquiries', 'reminders', 'dues', 'outstandings', 'smsRequestSetting', 'smslogs', 'expiringCount', 'expiredCount', 'birthdayCount', 'reminderCount', 'recievedCheques', 'recievedChequesCount', 'depositedCheques', 'depositedChequesCount', 'bouncedCheques', 'bouncedChequesCount', 'membersPerPlan'));
