@@ -11,7 +11,7 @@ use App\Invoice;
 use App\Service;
 use App\Setting;
 use Carbon\Carbon;
-use App\SmsTrigger;
+
 use App\ChequeDetail;
 use App\Subscription;
 use App\InvoiceDetail;
@@ -269,12 +269,8 @@ class MembersController extends Controller
 
             //SMS Trigger
             if ($invoice->status == \constPaymentStatus::Paid) {
-                $sms_trigger = SmsTrigger::where('alias', '=', 'member_admission_with_paid_invoice')->first();
-                $message = $sms_trigger->message;
-                $sms_text = sprintf($message, $member->name, $gym_name, $paymentDetails->payment_amount, $invoice->invoice_number);
-                $sms_status = $sms_trigger->status;
-
-                \Utilities::Sms($sender_id, $member->contact, $sms_text, $sms_status);
+              
+                
             } elseif ($invoice->status == \constPaymentStatus::Partial) {
                 $sms_trigger = SmsTrigger::where('alias', '=', 'member_admission_with_partial_invoice')->first();
                 $message = $sms_trigger->message;
