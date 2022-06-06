@@ -152,6 +152,9 @@ class MembersController extends Controller
                                     'pin_code'=> $request->pin_code,
                                     'occupation'=> $request->occupation,
                                     'aim'=> $request->aim,
+                                    'weight'=>$request->weight,
+                                    'height'=>$request->height,
+                                    'imc'=> ($request->weight)/($request->height),
                                     'source'=> $request->source, ];
 
             $member = new Member($memberData);

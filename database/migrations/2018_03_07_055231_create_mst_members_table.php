@@ -34,6 +34,10 @@ class CreateMstMembersTable extends Migration
             $table->timestamps();
             $table->integer('created_by')->unsigned()->index('FK_mst_members_mst_users_1');
             $table->integer('updated_by')->unsigned()->index('FK_mst_members_mst_users_2');
+            $table->float('weight');
+            $table->float('height');
+            $table->float('imc');
+            
         });
     }
 

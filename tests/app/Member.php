@@ -31,6 +31,9 @@ class Member extends Model implements HasMediaConversions
         'occupation',
         'aim',
         'source',
+        'weight',
+        'height',
+        'imc',
         'created_by',
         'updated_by',
     ];

@@ -167,6 +167,19 @@
                     {!! Form::text('pin_code',null,['class'=>'form-control', 'id' => 'pin_code']) !!}
                 </div>
             </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    {!! Form::label('height','Altura',['class'=>'control-label']) !!}
+                    {!! Form::text('height',null,['class'=>'form-control', 'id' => 'height']) !!}
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    {!! Form::label('weight','Peso',['class'=>'control-label']) !!}
+                    {!! Form::text('weight',null,['class'=>'form-control', 'id' => 'weight']) !!}
+                </div>
+            </div>
+            
         </div>
     </div>
 
