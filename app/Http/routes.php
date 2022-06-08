@@ -11,7 +11,7 @@ Route::get('reportData/members', 'ReportData\MembersController@details');
 
 
 Route::post('api/token', 'Api\AuthenticateController@authenticate');
-
+Route::get('recomendation/{id}','Recomendation@index');
 Route::group(['prefix' => 'api', 'middleware' => ['jwt.auth']], function () {
     Route::get('dashboard', 'Api\DashboardController@index');
     Route::get('members', 'Api\MembersController@index');
