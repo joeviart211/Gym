@@ -159,6 +159,7 @@ return [
         Spatie\MediaLibrary\MediaLibraryServiceProvider::class,
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
         Sentry\SentryLaravel\SentryLaravelServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
     ],
 
     /*
@@ -217,7 +218,7 @@ return [
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
         'Sentry' => Sentry\SentryLaravel\SentryFacade::class,
-	'PDF' => Barryvdh\DomPDF\Facade::class,
+	    'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 
 ];
