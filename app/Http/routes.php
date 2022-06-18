@@ -8,7 +8,8 @@
 
 
 Route::get('reportData/members', 'ReportData\MembersController@details');
-
+Route::get('downloads/{id}','PDFController@index');
+Route::get('members/delete/{id}','MembersController@delete');
 
 Route::post('api/token', 'Api\AuthenticateController@authenticate');
 Route::get('recomendation/{id}','Recomendation@index');

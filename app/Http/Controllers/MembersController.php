@@ -11,7 +11,7 @@ use App\Invoice;
 use App\Service;
 use App\Setting;
 use Carbon\Carbon;
-
+use PDF;
 use App\ChequeDetail;
 use App\Subscription;
 use App\InvoiceDetail;
@@ -154,7 +154,7 @@ class MembersController extends Controller
                                     'aim'=> $request->aim,
                                     'weight'=>$request->weight,
                                     'height'=>$request->height,
-                                    'imc'=> ($request->weight)/($request->height),
+                                    'imc'=> ($request->weight)/($request->height*$request->height),
                                     'source'=> $request->source, ];
 
             $member = new Member($memberData);
@@ -388,6 +388,10 @@ class MembersController extends Controller
      */
     public function archive($id, Request $request)
     {
+        $a=$request->id;
+        $members=DB::table('mst_members')->where('id',$a)->first();
+        
+        DB::table('trn_payment_details')->where('id',$members->id)->delete();
         Subscription::where('member_id', $id)->delete();
 
         $invoices = Invoice::where('member_id', $id)->get();
@@ -462,5 +466,42 @@ class MembersController extends Controller
         }
 
         return 'Select daterange filter';
+    }
+    public function delete($id,Request $request){
+        $a=$request->id;
+        $members=DB::table('mst_members')->where('id',$a)->first();
+        
+        DB::table('trn_payment_details')->where('id',$members->id)->delete();
+
+
+        Subscription::where('member_id', $id)->delete();
+
+        $invoices = Invoice::where('member_id', $id)->get();
+
+        foreach ($invoices as $invoice) {
+            InvoiceDetail::where('invoice_id', $invoice->id)->delete();
+            $paymentDetails = PaymentDetail::where('invoice_id', $invoice->id)->get();
+
+            foreach ($paymentDetails as $paymentDetail) {
+                ChequeDetail::where('payment_id', $paymentDetail->id)->delete();
+                $paymentDetail->delete();
+            }
+
+            $invoice->delete();
+        }
+
+        $member = Member::findOrFail($id);
+        $member->clearMediaCollection('profile');
+        $member->clearMediaCollection('proof');
+
+        $member->delete();
+
+        
+        
+        
+        
+
+
+    return redirect('/members/all');
     }
 }

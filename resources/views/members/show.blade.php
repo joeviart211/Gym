@@ -18,9 +18,15 @@
                                 
 
                                
-                                <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal-{{$member->id}}" data-id="{{$member->id}}">
-                                    <span>Borrar</span>
+                            <button class="btn btn-danger" onclick="window.location='{{ url("members/delete/$member->id") }}'" >
+                                    <span>Borrar Listado de pagos</span>
                                 </button>
+                                <button class="btn btn-danger" onclick="window.location='{{ url("downloads/$member->id") }}'" >
+                                    <span>Descargar recomendación</span>
+                                </button>
+                                
+                            </div>
+
                                 
 
                                 

@@ -17,7 +17,7 @@
     <div class="col-sm-6">
         <div class="form-group">
             {!! Form::label('name','Nombre',['class'=>'control-label']) !!}
-            {!! Form::text('name',null,['class'=>'form-control', 'id' => 'name']) !!}
+            {!! Form::text( 'name',null,['class'=>'form-control', 'id' => 'name']) !!}
         </div>
     </div>
 </div>
@@ -104,7 +104,7 @@
 <div class="row">
     @if(isset($member))
         <?php
-        $media = $member->getMedia('profile');
+            $media = $member->getMedia('profile');
         $image = ($media->isEmpty() ? 'https://placeholdit.imgix.net/~text?txtsize=18&txt=NA&w=70&h=70' : url($media[0]->getUrl('form')));
         ?>
         <div class="col-sm-4">

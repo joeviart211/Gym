@@ -20,7 +20,11 @@ $(document).ready(function() {
 								stringLength: {
 			                        max: 50,
 			                        message: 'It must be less than 50 characters'
-			                    }
+			                    },
+								regexp: {
+									regexp: /^[a-z\s]+$/i,
+									message: 'The full name can consist of alphabetical characters and spaces only',
+								},
 							}
 						},
 						status:{

@@ -114,7 +114,13 @@ var startDateValidators = {
 					regexp: {
 						regexp: /^[0-9\.]+$/,
 						message: 'The input is not a valid pin code'
-					}
+					},
+					stringLength: {
+						min: 5,
+                        max: 5,
+                        message: 'It must be 5   characters'
+                    }
+					
 				}
 			},
 			occupation: {
@@ -233,7 +239,8 @@ var startDateValidators = {
 					},
 					stringLength: {
                         max: 10,
-                        message: 'It must be less than 10 characters'
+						min: 10,
+                        message: 'It must be  10 characters'
                     }
 				}
 			},
@@ -252,7 +259,36 @@ var startDateValidators = {
                     }
 				}
 			},
+			weight: {
+				validators: {
+					notEmpty: {
+						message: 'The contact is required and can\'t be empty'
+					},
+					regexp: {
+						regexp: /^[0-9\.]+$/,
+						message: 'The input is not a valid number'
+					},
+				}
+				
+			},
+			height: {
+				validators: {
+					notEmpty: {
+						message: 'The contact is required and can\'t be empty'
+					},
+					regexp: {
+						regexp: /^[0-9\.]+$/,
+						message: 'The input is not a valid number'
+					},
+				}
+				
+			},
+			
 			'plan[0].start_date' : startDateValidators								          
+		
+		
+		
+		
 		}
 	});
 	

@@ -76,7 +76,7 @@ class SettingsTableSeeder extends Seeder
             ],
             [
                 'key' => 'taxes',
-                'value' => '15',
+                'value' => '16',
             ],
             [
                 'key' => 'sms_api_key',
