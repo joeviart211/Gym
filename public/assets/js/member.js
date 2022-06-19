@@ -78,6 +78,10 @@ var startDateValidators = {
 				validators: {
 					notEmpty: {
 						message: 'This field required and can\'t be empty'
+					},
+					regexp: {
+						regexp: /^[a-z\s]+$/i,
+						message: 'Must consist of alphabetical characters and spaces only',
 					}
 				}
 			},
@@ -89,7 +93,11 @@ var startDateValidators = {
 					stringLength: {
                         max: 50,
                         message: 'It must be less than 50 characters'
-                    }
+                    },
+					regexp: {
+						regexp: /^[a-z\s]+$/i,
+						message: 'Must consist of alphabetical characters and spaces only',
+					}
 				}
 			},
 			gender: {

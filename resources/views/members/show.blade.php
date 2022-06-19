@@ -19,7 +19,7 @@
 
                                
                             <button class="btn btn-danger" onclick="window.location='{{ url("members/delete/$member->id") }}'" >
-                                    <span>Borrar Listado de pagos</span>
+                                    <span>Borrar</span>
                                 </button>
                                 <button class="btn btn-danger" onclick="window.location='{{ url("downloads/$member->id") }}'" >
                                     <span>Descargar recomendación</span>
@@ -117,7 +117,7 @@
                                             <hr class="margin-top-0 margin-bottom-10">
                                             <div class="row">
                                                 <div class="col-sm-4">
-                                                    <label>Contacto de emergenciat</label>
+                                                    <label>Contacto de emergencia (telefono)</label>
                                                 </div>
                                                 <div class="col-sm-8">
                                                     <span class="show-data">{{$member->emergency_contact}}</span>

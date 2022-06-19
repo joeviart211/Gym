@@ -25,7 +25,7 @@
                 <div class="col-md-12">
                     <div class="panel no-border">
                         <div class="panel-title">
-                            <div class="panel-head font-size-20">}Nuevo miembro </div>
+                            <div class="panel-head font-size-20">Nuevo miembro </div>
                         </div>
                         <div class="panel-body">
                             @include('members.form')

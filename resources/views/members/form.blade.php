@@ -57,7 +57,7 @@
 <div class="row">
     <div class="col-sm-6">
         <div class="form-group">
-            {!! Form::label('emergency_contact','Contacto de emergencia') !!}
+            {!! Form::label('emergency_contact','Contacto de emergencia (Telefono)') !!}
             {!! Form::text('emergency_contact',null,['class'=>'form-control', 'id' => 'emergency_contact']) !!}
         </div>
     </div>
